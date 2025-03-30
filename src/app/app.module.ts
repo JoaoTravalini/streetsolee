@@ -6,6 +6,10 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './components/autenticacao/login/login.component';
 import { CadastroComponent } from './components/autenticacao/cadastro/cadastro.component';
 
+import { environment } from '../environments/environments'
+
+import { AngularFireModule } from '@angular/fire/compat'
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -14,7 +18,8 @@ import { CadastroComponent } from './components/autenticacao/cadastro/cadastro.c
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AngularFireModule.initializeApp(environment.firebase),
   ],
   providers: [],
   bootstrap: [AppComponent]
