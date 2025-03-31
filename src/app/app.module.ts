@@ -10,6 +10,7 @@ import { environment } from '../environments/environments'
 
 import { AngularFireModule } from '@angular/fire/compat';
 import { HeaderComponent } from './shared/components/header/header.component'
+import { FormsModule } from '@angular/forms'
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { HeaderComponent } from './shared/components/header/header.component'
     BrowserModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -6,18 +6,18 @@
         <div class="form-box">
             <h2>Crie sua conta</h2>
             <p>Preencha os dados abaixo para se registrar</p>
-            <form>
+            <form #registerForm="ngForm">
                 <label for="name">Nome</label>
-                <input type="text" id="name" placeholder="Digite seu nome" required>
+                <input type="text" id="name" name="name" placeholder="Digite seu nome" [(ngModel)]="name" required>
 
                 <label for="email">Email</label>
-                <input type="email" id="email" placeholder="Digite seu email" required>
+                <input type="email" id="email" name="email" placeholder="Digite seu email" [(ngModel)]="email" required>
 
                 <label for="phone">Telefone</label>
-                <input type="tel" id="phone" placeholder="Digite seu telefone" required>
+                <input type="tel" id="phone" name="tel" placeholder="Digite seu telefone" [(ngModel)]="tel" required>
 
                 <label for="gender">Gênero</label>
-                <select id="gender" required>
+                <select id="gender" name="gender" [(ngModel)]="gender" required>
                     <option value="" disabled selected>Escolha seu gênero</option>
                     <option value="masculino">Masculino</option>
                     <option value="feminino">Feminino</option>
@@ -25,13 +25,14 @@
                 </select>
 
                 <label for="password">Senha</label>
-                <input type="password" id="password" placeholder="Digite sua senha" required>
+                <input type="password" id="password" name="password" placeholder="Digite sua senha" [(ngModel)]="password" required>
 
                 <label for="confirmPassword">Confirmar Senha</label>
-                <input type="password" id="confirmPassword" placeholder="Confirme sua senha" required>
+                <input type="password" id="confirmPassword" name="confirmPassword" [(ngModel)]="confirmPassword" placeholder="Confirme sua senha" required>
 
+                <button type="submit" (click)="register()">Registrar</button>
 
-                <button type="submit">Registrar</button>
+                <p class="register-link">Já tem uma conta? <a href="http://localhost:4200/login">Fazer login</a></p>
             </form>
         </div>
     </div>
