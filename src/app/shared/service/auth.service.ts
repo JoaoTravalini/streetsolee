@@ -16,9 +16,14 @@ export class AuthService {
 
   // Login com email e senha
   login(email: string, password: string) {
-    this.fireauth.signInWithEmailAndPassword(email, password).then(() => {
-      localStorage.setItem('token', 'true');
-      this.router.navigate(['/header']);
+    this.fireauth.signInWithEmailAndPassword(email, password).then(res => {
+      localStorage.setItem('token', 'true')
+      if (res.user?.emailVerified == true) {
+        this.router.navigate(['/header']);
+      } else {
+        this.sendEmailForVerification(res.user);
+        alert('Verifique seu email, um link foi enviado');
+      }
     }, err => {
       alert(err.message);
       this.router.navigate(['/login']);
@@ -27,12 +32,15 @@ export class AuthService {
 
   // Cadastro com email e senha
   register(email: string, password: string) {
-    this.fireauth.createUserWithEmailAndPassword(email, password).then(() => {
-      alert('Registrado com sucesso!');
-      this.router.navigate(['/login']);
-    }, err => {
+    this.fireauth.createUserWithEmailAndPassword(email, password).then(async res => {
+      if (res.user) {
+        await this.sendEmailForVerification(res.user);  // Agora aguarda a execução corretamente
+        alert('Registro realizado com sucesso! Verifique seu email para ativar sua conta.');
+        this.router.navigate(['/login']);
+      }
+    }).catch(err => {
       alert(err.message);
-      this.router.navigate(['/cadastro']);
+      console.error('Erro ao cadastrar:', err);
     });
   }
 
@@ -43,11 +51,31 @@ export class AuthService {
       this.router.navigate(['/login']);
     }, err => {
       alert(err.message);
-      
     });
   }
 
-  //método para fazer login com o google
+  // Redefinição de senha
+  forgotPassword(email: string) {
+    this.fireauth.sendPasswordResetEmail(email).then(() => {
+      this.router.navigate(['/recuperar-senha']);
+    }, err => {
+      alert('Algo deu errado');
+    });
+  }
+
+  // Verificação de Email
+  async sendEmailForVerification(user: any) {
+    try {
+      if (user) {
+        await user.sendEmailVerification();
+        alert('Um link de verificação foi enviado para seu email.');
+      }
+    } catch (err) {
+      console.error('Erro ao enviar email de verificação:', err);
+    }
+  }
+
+  //Método para fazer login com o google
   googleSignIn() {
     return this.fireauth.signInWithPopup(new GoogleAuthProvider()).then(async res => {
       this.router.navigate(['/cadastro']);
