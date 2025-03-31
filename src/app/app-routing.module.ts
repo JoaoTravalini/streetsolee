@@ -2,10 +2,12 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './components/autenticacao/login/login.component';
 import { CadastroComponent } from './components/autenticacao/cadastro/cadastro.component';
+import { HeaderComponent } from './shared/components/header/header.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
-  { path: 'cadastro', component: CadastroComponent }
+  { path: 'cadastro', component: CadastroComponent },
+  { path: 'header', component: HeaderComponent},
 ];
 
 @NgModule({

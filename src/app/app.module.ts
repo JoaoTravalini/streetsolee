@@ -8,13 +8,15 @@ import { CadastroComponent } from './components/autenticacao/cadastro/cadastro.c
 
 import { environment } from '../environments/environments'
 
-import { AngularFireModule } from '@angular/fire/compat'
+import { AngularFireModule } from '@angular/fire/compat';
+import { HeaderComponent } from './shared/components/header/header.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    CadastroComponent
+    CadastroComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
