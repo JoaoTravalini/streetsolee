@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
 import { AuthService } from '../../../shared/service/auth.service';
 
 @Component({
@@ -6,7 +6,7 @@ import { AuthService } from '../../../shared/service/auth.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit, OnDestroy {
+export class LoginComponent implements OnInit, OnDestroy, AfterViewInit {
   images: string[] = [
     '../../../../assets/images/airjordan.jpg',
     '../../../../assets/images/nikedunk.jpg',
@@ -18,10 +18,14 @@ export class LoginComponent implements OnInit, OnDestroy {
   public email: string = '';
   public password: string = '';
 
-  constructor (private auth: AuthService) { }
+  constructor(private auth: AuthService) { }
 
   ngOnInit() {
     this.startImageCarousel();
+  }
+
+  ngAfterViewInit() {
+    this.setupPanelSwitch();
   }
 
   ngOnDestroy() {
@@ -30,27 +34,42 @@ export class LoginComponent implements OnInit, OnDestroy {
     }
   }
 
-  // Controla o tempo em que o carrossel de imagens muda e faz um loop circular
   startImageCarousel() {
     this.intervalId = setInterval(() => {
       this.currentImageIndex = (this.currentImageIndex + 1) % this.images.length;
-    }, 3000); 
+      const overlay = document.querySelector<HTMLElement>('.overlay');
+      if (overlay) {
+        overlay.style.backgroundImage = `url('${this.images[this.currentImageIndex]}')`;
+      }
+    }, 3000);
   }
 
-  // Login com google
+  setupPanelSwitch() {
+    const registerButton = document.getElementById('register');
+    const loginButton = document.getElementById('login');
+    const container = document.getElementById('container');
+    
+    if (registerButton && loginButton && container) {
+      registerButton.addEventListener('click', () => {
+        container.classList.add('right-panel-active');
+      });
+      
+      loginButton.addEventListener('click', () => {
+        container.classList.remove('right-panel-active');
+      });
+    }
+  }
+
   signInWithGoogle() {
     this.auth.googleSignIn();
   }
 
-  // Login com email e senha
   login() {
-    if(this.email === '' || this.password === '') {
+    if (this.email === '' || this.password === '') {
       alert('Preencha todos os campos!');
       return;
     }
-
     this.auth.login(this.email, this.password);
-
     this.email = '';
     this.password = '';
   }

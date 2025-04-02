@@ -1,32 +1,59 @@
-<div class="container">
-    <div class="login-section">
-        <div class="login-box">
-            <div class="form-login">
-                <h2>Seja bem-vindo!</h2>
-                <p>Entre para continuar acessando a plataforma</p>
-                <form>
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" placeholder="Digite seu email" [(ngModel)]="email" required>
+<link href="https://cdn.lineicons.com/4.0/lineicons.css" rel="stylesheet" />
+<body>
+    <div class="container" id="container">
+        <div class="form-container register-container">
+            <form action="#">
+                <h1>Crie sua conta</h1>
+                <input type="text" placeholder="Nome">
+                <input type="email" placeholder="Email">
+                <input type="tel" id="phone" name="tel" placeholder="Telefone" required>
+                <select id="gender" name="gender" required>
+                    <option value="" disabled selected>Escolha seu gênero</option>
+                    <option value="masculino">Masculino</option>
+                    <option value="feminino">Feminino</option>
+                    <option value="outro">Outro</option>
+                </select>
+                <input type="password" placeholder="Senha">
+                <input type="password" placeholder="Confimar Senha">
+                <button>Registrar</button>
+            </form>
+        </div>
 
-                    <label for="password">Senha</label>
-                    <input type="password" id="password" name="password" placeholder="Digite sua senha" [(ngModel)]="password" required>
+        <div class="form-container login-container">
+            <form action="#">
+                <h1>Seja bem-vindo!</h1>
+                <input type="email" placeholder="Email">
+                <input type="password" placeholder="Password">
+                <div class="content">
+                    <div class="pass-link">
+                        <a href="#">Esqueceu sua senha?</a>
+                    </div>
+                </div>
+                <button>Entrar</button>
+                <span>ou use sua conta google</span>
+                <div class="social-container">
+                    <a href="#" class="social"><i class="lni lni-google"></i></a>
+                </div>
+            </form>
+        </div>
 
-                    <button type="submit" (click)="login()">Entrar</button>
-                    <p class="register-link">Não tem conta? <a href="http://localhost:4200/cadastro">Registrar-se</a></p>
-                    <button class="buttonGoogle" (click)="signInWithGoogle()" type="button">
-                        <img class="googleLogo" src="../../../../assets/logos/image.png" alt="Google">
-                        Entre com google
+        <div class="overlay-container">
+            <div class="overlay">
+                <div class="overlay-panel overlay-left">
+                    <h1 class="title">Não é  <br> novo aqui?</h1>
+                    <p>Já tem uma conta? Faça login no botão abaixo</p>
+                    <button class="ghost" id="login">Entrar
+                        <i class="lni lni-arrow-left login"></i>
                     </button>
-                    <p class="register-link">Esqueceu sua senha? <a href="/recuperar-senha">Recuperar senha</a></p>
-                </form>
+                </div>
+                <div class="overlay-panel overlay-right">
+                    <h1 class="title">Comece sua<br> jornada</h1>
+                    <p>Ainda não tem uma conta? Registre-se clicando no botão abaixo</p>
+                    <button class="ghost" id="register">Registrar
+                        <i class="lni lni-arrow-right register"></i>
+                    </button>
+                </div>
             </div>
         </div>
     </div>
-
-    <div class="image-section">
-        <div class="image-carousel">
-            <img *ngFor="let image of images; let i = index" [src]="image" [alt]="'image-' + i"
-                [class.active]="i === currentImageIndex" class="carousel-image">
-        </div>
-    </div>
-</div>
+</body>
