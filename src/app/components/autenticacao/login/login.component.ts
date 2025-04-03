@@ -15,8 +15,17 @@ export class LoginComponent implements OnInit, OnDestroy, AfterViewInit {
   currentImageIndex = 0;
   intervalId: any;
 
+  // Login
   public email: string = '';
   public password: string = '';
+
+  // Registro
+  public registerEmail: string = '';
+  public registerPassword: string = '';
+  public confirmPassword: string = '';
+  public name: string = '';
+  public tel: string = '';
+  public gender: string = '';
 
   constructor(private auth: AuthService) { }
 
@@ -60,7 +69,8 @@ export class LoginComponent implements OnInit, OnDestroy, AfterViewInit {
     }
   }
 
-  signInWithGoogle() {
+  signInWithGoogle(event: Event) {
+    event?.preventDefault();
     this.auth.googleSignIn();
   }
 
@@ -69,8 +79,53 @@ export class LoginComponent implements OnInit, OnDestroy, AfterViewInit {
       alert('Preencha todos os campos!');
       return;
     }
+    
+    if (!this.validateEmail(this.email)) {
+      alert('Por favor, insira um e-mail válido!');
+      return;
+    }
+    
     this.auth.login(this.email, this.password);
     this.email = '';
     this.password = '';
+  }
+
+  register() {
+    if (this.name === '' || this.registerEmail === '' || this.tel === '' || 
+        this.gender === '' || this.registerPassword === '' || this.confirmPassword === '') {
+      alert('Preencha todos os campos!');
+      return;
+    }
+
+    if (!this.validateEmail(this.registerEmail)) {
+      alert('Por favor, insira um e-mail válido!');
+      return;
+    }
+
+    if (this.registerPassword !== this.confirmPassword) {
+      alert('As senhas não coincidem!');
+      return;
+    }
+
+    if (this.registerPassword.length < 6) {
+      alert('A senha deve ter pelo menos 6 caracteres!');
+      return;
+    }
+
+    this.auth.register(this.registerEmail, this.registerPassword);
+    
+    // Limpa os campos
+    this.name = '';
+    this.registerEmail = '';
+    this.tel = '';
+    this.gender = '';
+    this.registerPassword = '';
+    this.confirmPassword = '';
+  }
+
+  // Função simples para validar e-mail
+  private validateEmail(email: string): boolean {
+    const re = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    return re.test(email);
   }
 }

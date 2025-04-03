@@ -2,37 +2,39 @@
 <body>
     <div class="container" id="container">
         <div class="form-container register-container">
-            <form action="#">
+            <form>
                 <h1>Crie sua conta</h1>
-                <input type="text" placeholder="Nome">
-                <input type="email" placeholder="Email">
-                <input type="tel" id="phone" name="tel" placeholder="Telefone" required>
-                <select id="gender" name="gender" required>
+                <input type="text" placeholder="Nome" [(ngModel)]="name" name="name">
+                <input type="email" placeholder="Email" [(ngModel)]="registerEmail" name="registerEmail">
+                <input type="tel" placeholder="Telefone" [(ngModel)]="tel" name="tel">
+                <select [(ngModel)]="gender" name="gender">
                     <option value="" disabled selected>Escolha seu gênero</option>
                     <option value="masculino">Masculino</option>
                     <option value="feminino">Feminino</option>
                     <option value="outro">Outro</option>
                 </select>
-                <input type="password" placeholder="Senha">
-                <input type="password" placeholder="Confimar Senha">
-                <button>Registrar</button>
+                <input type="password" placeholder="Senha" [(ngModel)]="registerPassword" name="registerPassword">
+                <input type="password" placeholder="Confirmar Senha" [(ngModel)]="confirmPassword" name="confirmPassword">
+                <button type="button" (click)="register()">Registrar</button>
             </form>
         </div>
 
         <div class="form-container login-container">
-            <form action="#">
+            <form>
                 <h1>Seja bem-vindo!</h1>
-                <input type="email" placeholder="Email">
-                <input type="password" placeholder="Password">
+                <input type="email" placeholder="Email" [(ngModel)]="email" name="email">
+                <input type="password" placeholder="Senha" [(ngModel)]="password" name="password">
                 <div class="content">
                     <div class="pass-link">
-                        <a href="#">Esqueceu sua senha?</a>
+                        <a href="/recuperar-senha">Esqueceu sua senha?</a>
                     </div>
                 </div>
-                <button>Entrar</button>
+                <button type="button" (click)="login()">Entrar</button>
                 <span>ou use sua conta google</span>
                 <div class="social-container">
-                    <a href="#" class="social"><i class="lni lni-google"></i></a>
+                    <a href="javascript:void(0)" class="social" (click)="signInWithGoogle($event)">
+                        <i class="lni lni-google"></i>
+                    </a>
                 </div>
             </form>
         </div>
@@ -40,7 +42,7 @@
         <div class="overlay-container">
             <div class="overlay">
                 <div class="overlay-panel overlay-left">
-                    <h1 class="title">Não é  <br> novo aqui?</h1>
+                    <h1 class="title">Não é <br> novo aqui?</h1>
                     <p>Já tem uma conta? Faça login no botão abaixo</p>
                     <button class="ghost" id="login">Entrar
                         <i class="lni lni-arrow-left login"></i>
