@@ -7,6 +7,8 @@ import { AuthService } from '../../../shared/service/auth.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit, OnDestroy, AfterViewInit {
+
+  // Imagens background
   images: string[] = [
     '../../../../assets/images/airjordan.jpg',
     '../../../../assets/images/nikedunk.jpg',
@@ -123,7 +125,6 @@ export class LoginComponent implements OnInit, OnDestroy, AfterViewInit {
     this.confirmPassword = '';
   }
 
-  // Função simples para validar e-mail
   private validateEmail(email: string): boolean {
     const re = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     return re.test(email);
