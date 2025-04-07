@@ -18,7 +18,7 @@ export class AuthService {
       if (res.user?.emailVerified) {
         const token = await this.generateJWTToken({ email });
         this.setJWTToken(token);
-        this.router.navigate(['/header']);
+        this.router.navigate(['']);
       } else {
         await this.sendEmailForVerification(res.user);
         alert('Verifique seu email, um link foi enviado');
@@ -72,7 +72,7 @@ export class AuthService {
     return this.fireauth.signInWithPopup(new GoogleAuthProvider()).then(async res => {
       const token = await this.generateJWTToken({ email: res.user?.email });
       this.setJWTToken(token);
-      this.router.navigate(['/cadastro']);
+      this.router.navigate(['']);
     }).catch(err => {
       alert(err.message);
     });
