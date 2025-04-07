@@ -1,0 +1,86 @@
+.image-container {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+
+    img {
+        width: 33.33%;
+        object-fit: cover;
+    }
+}
+h2 {
+    margin-bottom: 12px;
+}
+
+.carousel-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+    padding: 20px;
+    overflow: hidden;
+
+    &:hover .arrow {
+        opacity: 1; 
+    }
+}
+
+.carousel {
+    width: 80%;
+    overflow: hidden;
+}
+
+.carousel-track {
+    display: flex;
+    gap: 20px;
+    scroll-behavior: smooth;
+    overflow-x: auto;
+    white-space: nowrap;
+    scrollbar-width: none;
+}
+
+.carousel-track::-webkit-scrollbar {
+    display: none;
+}
+
+.carousel-item {
+    flex: 0 0 auto;
+    width: 250px;
+    text-align: center;
+}
+
+.carousel-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    height: 400px;
+    object-fit: cover;
+}
+
+.arrow {
+    position: absolute;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    padding: 12px;
+    border-radius: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0; 
+    transition: opacity 0.3s ease-in-out;
+}
+
+.left {
+    left: 80px;
+}
+
+.right {
+    right: 80px;
+}
+
+.arrow:hover {
+    background: rgba(0, 0, 0, 0.8);
+}

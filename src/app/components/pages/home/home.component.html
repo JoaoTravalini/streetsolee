@@ -1,0 +1,43 @@
+<app-header></app-header>
+
+<!-- Seção das 3 imagens lado a lado -->
+<div class="image-container">
+    <img src="../../../../assets/images/airjordan1-1.jpg" alt="Tênis">
+    <img src="../../../../assets/images/airjordan1-2.jpg" alt="Tênis">
+    <img src="../../../../assets/images/airjordan1-3.jpg" alt="Tênis">
+</div>
+
+<!-- Carrossel de Mais Pedidos -->
+<div class="carousel-container">
+    <button class="arrow left" (click)="prevSlide('carouselTrack1')">❮</button>
+
+    <div class="carousel">
+        <h2>Mais pedidos</h2>
+        <div class="carousel-track" #carouselTrack1>
+            <div *ngFor="let item of recommendedProducts" class="carousel-item">
+                <img [src]="item.image" alt="{{ item.name }}">
+                <p>{{ item.name }}</p>
+            </div>
+        </div>
+    </div>
+
+    <button class="arrow right" (click)="nextSlide('carouselTrack1')">❯</button>
+</div>
+
+<!-- Carrossel de Para Você -->
+<div class="carousel-container">
+    <button class="arrow left" (click)="prevSlide('carouselTrack2')">❮</button>
+
+    <div class="carousel">
+        <h2>Para você</h2>
+        <div class="carousel-track" #carouselTrack2>
+            <div *ngFor="let item of personalizedProducts" class="carousel-item">
+                <img [src]="item.image" alt="{{ item.name }}">
+                <p>{{ item.name }}</p>
+            </div>
+        </div>
+    </div>
+
+    <button class="arrow right" (click)="nextSlide('carouselTrack2')">❯</button>
+</div>
+

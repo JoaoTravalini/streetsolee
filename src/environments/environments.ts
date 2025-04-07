@@ -8,4 +8,6 @@ export const environment = {
         appId: "1:129755507544:web:e7b129918be62d1b9f932d",
         measurementId: "G-SGE27TX9TM"
     },
-}
+
+    secret: new TextEncoder().encode('HS256')
+};
