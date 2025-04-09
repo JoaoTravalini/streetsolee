@@ -10,7 +10,7 @@ import * as jose from 'jose';
 })
 export class AuthService {
 
-  constructor(private fireauth: AngularFireAuth, private router: Router) { }
+  constructor(private fireauth: AngularFireAuth, private router: Router) {}
 
   async login(email: string, password: string) {
     try {
@@ -85,6 +85,7 @@ export class AuthService {
     const jwt = await new jose.SignJWT(payload)
       .setProtectedHeader({ alg })
       .setIssuedAt()
+      .setExpirationTime('2h') 
       .setIssuer('urn:example:issuer')
       .setAudience('urn:example:audience')
       .sign(environment.secret);
@@ -99,14 +100,16 @@ export class AuthService {
       });
       return true;
     } catch (err) {
+      this.removeJWTToken(); // <- Remove token inválido
       return false;
     }
   }
 
   decodeJWT(): any {
-    const token = JSON.parse(localStorage.getItem('token') || 'null');
+    const token = localStorage.getItem('token');
+    if (!token) return null;
     try {
-      return jose.decodeJwt(token);
+      return jose.decodeJwt(JSON.parse(token));
     } catch {
       return null;
     }
