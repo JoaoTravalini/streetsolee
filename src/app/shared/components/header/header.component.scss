@@ -1,111 +1,122 @@
 header {
-    background-color: #f5f5f5;
-  
-    .top-bar {
-      background: #56ADB5;
-      color: white;
-      text-align: center;
-      padding: 8px 0;
-      font-size: 14px;
-    }
-  
-    .nav-bar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 15px 40px;
-      flex-wrap: wrap; 
-      gap: 10px;
-    }
-  
-    .logo {
-      width: 70px;
-    }
-  
-    .menu ul {
-      display: flex;
-      flex-wrap: wrap;
-      list-style: none;
-      padding: 0;
-      margin: 0;
-  
-      li {
-        margin: 0 15px;
-        
-        a {
-          text-decoration: none;
-          color: black;
-          font-weight: bold;
-          font-size: 14px;
-        }
-      }
-    }
-  
-    .search {
-      display: flex;
-      align-items: center;
-      background: #f5f5f5;
-      min-width: 200px;
-      padding: 4px 10px;
-      border-radius: 8px;
-      border: 1px solid black;
-      flex-grow: 1; 
-      max-width: 300px;
-    
-      input {
-        border: none;
-        background: none;
-        outline: none;
-        width: 100%;
-        padding: 10px 0;
-      }
-    
-      button {
-        background: none;
-        border: none;
-        cursor: pointer;
-        font-size: 18px;
-      }
-    }
-  
-    .icons {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      flex-shrink: 0; // 👈 não reduz os ícones
-      margin-left: auto; // 👈 empurra pro final da linha
-      min-width: 120px;
-    
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: white;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  &.hidden {
+    transform: translateY(-100%);
+    box-shadow: none;
+  }
+
+  .top-bar {
+    background: #56ADB5;
+    color: white;
+    text-align: center;
+    padding: 8px 0;
+    font-size: 14px;
+  }
+
+  .nav-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 40px;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .logo {
+    width: 70px;
+  }
+
+  .menu ul {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+      margin: 0 15px;
+
       a {
-        color: black;
-        font-size: 18px;
-        position: relative;
-      }
-    
-      .notification {
-        position: absolute;
-        top: -10px;
-        right: -10px;
-        background: #56ADB5;
-        color: black;
-        font-size: 12px;
-        padding: 2px 6px;
-        border-radius: 50%;
-        font-weight: bold;
-      }
-    }
-  
-    .secondary-menu {
-      display: flex;
-      justify-content: flex-end;
-      padding: 5px 40px;
-      font-size: 12px;
-  
-      a {
-        color: black;
         text-decoration: none;
-        margin-left: 15px;
+        color: black;
+        font-weight: bold;
+        font-size: 14px;
       }
     }
   }
-  
+
+  .search {
+    display: flex;
+    align-items: center;
+    background: #f5f5f5;
+    min-width: 200px;
+    padding: 4px 10px;
+    border-radius: 8px;
+    border: 1px solid black;
+    flex-grow: 1;
+    max-width: 300px;
+
+    input {
+      border: none;
+      background: none;
+      outline: none;
+      width: 100%;
+      padding: 10px 0;
+    }
+
+    button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 18px;
+    }
+  }
+
+  .icons {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-shrink: 0; // 👈 não reduz os ícones
+    margin-left: auto; // 👈 empurra pro final da linha
+    min-width: 120px;
+
+    a {
+      color: black;
+      font-size: 18px;
+      position: relative;
+    }
+
+    .notification {
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      background: #56ADB5;
+      color: black;
+      font-size: 12px;
+      padding: 2px 6px;
+      border-radius: 50%;
+      font-weight: bold;
+    }
+  }
+
+  .secondary-menu {
+    display: flex;
+    justify-content: flex-end;
+    padding: 5px 40px;
+    font-size: 12px;
+
+    a {
+      color: black;
+      text-decoration: none;
+      margin-left: 15px;
+    }
+  }
+}
