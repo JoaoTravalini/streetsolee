@@ -5,46 +5,92 @@
     <img src="../../../../assets/images/airjordan1-1.jpg" alt="Tênis">
     <img src="../../../../assets/images/airjordan1-2.jpg" alt="Tênis">
     <img src="../../../../assets/images/airjordan1-3.jpg" alt="Tênis">
-  
-    <!-- Texto e botão por cima das imagens -->
+
     <div class="hero-content">
-      <h1>Air Jordan 1</h1>
-      <p>Estilo lendário para quem não aceita menos que o topo.</p>
-      <button class="cta-button">COMPRAR AGORA</button>
+        <h1>Air Jordan 1</h1>
+        <p>Estilo lendário para quem não aceita menos que o topo.</p>
+        <button class="cta-button">COMPRAR AGORA</button>
     </div>
-  </div>
+</div>
 
 <!-- Carrossel de Mais Pedidos -->
 <div class="carousel-container">
-    <button class="arrow left" (click)="prevSlide('carouselTrack1')">❮</button>
+    <button class="arrow left" (click)="prevSlide('carouselTrack1')">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+            class="arrow-icon">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+    </button>
 
     <div class="carousel">
         <h2>Mais pedidos</h2>
         <div class="carousel-track" #carouselTrack1>
-            <div *ngFor="let item of recommendedProducts" class="carousel-item">
-                <img [src]="item.image" alt="{{ item.name }}">
-                <p>{{ item.name }}</p>
+            <div *ngFor="let item of recommendedProducts" class="product-card">
+                <div class="card-images">
+                    <img [src]="item.image" alt="{{ item.name }}">
+                </div>
+
+                <div class="card-info">
+                    <p class="price">R${{ item.price }},99</p>
+                    <p class="name">{{ item.name }}</p>
+                    <p class="subtitle">Performance</p>
+                </div>
+
+                <button class="wishlist">♡</button>
             </div>
         </div>
     </div>
 
-    <button class="arrow right" (click)="nextSlide('carouselTrack1')">❯</button>
+    <button class="arrow right" (click)="nextSlide('carouselTrack1')">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+            class="arrow-icon">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+    </button>
+</div>
+
+<div class="promo-banner">
+  <img src="assets/images/airjordan.jpg" alt="Banner Maratona do Rio" class="banner-img">
+
+  <div class="promo-content">
+    <h3>O RIO TE ESPERA PARA ESSA FESTA</h3>
+    <p class="promo-subtitle">18.06 A 22.06.25</p>
+    <button class="cta-banner">VER COLEÇÃO</button>
+  </div>
 </div>
 
 <!-- Carrossel de Para Você -->
 <div class="carousel-container">
-    <button class="arrow left" (click)="prevSlide('carouselTrack2')">❮</button>
+     <button class="arrow left" (click)="prevSlide('carouselTrack1')">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+            class="arrow-icon">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+    </button>
 
     <div class="carousel">
         <h2>Para você</h2>
         <div class="carousel-track" #carouselTrack2>
-            <div *ngFor="let item of personalizedProducts" class="carousel-item">
-                <img [src]="item.image" alt="{{ item.name }}">
-                <p>{{ item.name }}</p>
+            <div *ngFor="let item of personalizedProducts" class="product-card">
+                <div class="card-images">
+                    <img [src]="item.image" alt="{{ item.name }}">
+                </div>
+
+                <div class="card-info">
+                    <p class="price">R${{ item.price }},99</p>
+                    <p class="name">{{ item.name }}</p>
+                    <p class="subtitle">Performance</p>
+                </div>
+
+                <button class="wishlist">♡</button>
             </div>
         </div>
     </div>
 
-    <button class="arrow right" (click)="nextSlide('carouselTrack2')">❯</button>
+   <button class="arrow right" (click)="nextSlide('carouselTrack1')">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+            class="arrow-icon">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+    </button>
 </div>
-

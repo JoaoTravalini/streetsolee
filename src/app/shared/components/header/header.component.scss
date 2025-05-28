@@ -84,8 +84,8 @@ header {
     display: flex;
     align-items: center;
     gap: 20px;
-    flex-shrink: 0; // 👈 não reduz os ícones
-    margin-left: auto; // 👈 empurra pro final da linha
+    flex-shrink: 0; 
+    margin-left: auto; 
     min-width: 120px;
 
     a {

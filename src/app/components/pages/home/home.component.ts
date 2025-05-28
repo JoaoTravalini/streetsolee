@@ -10,42 +10,73 @@ export class HomeComponent implements AfterViewInit {
   @ViewChild('carouselTrack2', { static: false }) carouselTrack2!: ElementRef<HTMLDivElement>;
 
   recommendedProducts = [
-    { name: 'Tênis Adidas Rapidmove', image: 'assets/images/nigel1.jpg' },
-    { name: 'Camiseta Adidas Running', image: 'assets/images/nigel2.jpg' },
-    { name: 'Mochila Adidas Sport', image: 'assets/images/nigel3.jpg' },
-    { name: 'Boné Adidas Original', image: 'assets/images/nigel1.jpg' },
-    { name: 'Jaqueta Adidas Windbreaker', image: 'assets/images/nigel2.jpg' },
-    { name: 'Mochila Adidas Sport', image: 'assets/images/nigel3.jpg' },
+    {
+      name: 'Air Jordan 1',
+      price: 499,
+      image: 'assets/images/airjordan1-3.jpg',
+    },
+    {
+      name: 'ADIZERO ADIOS PRO 4 M',
+      price: 1999,
+      image: 'assets/images/nigel2.jpg',
+    },
+    {
+      name: 'Nikedunk',
+      price: 499,
+      image: 'assets/images/nikedunk.jpg',
+    },
+    {
+      name: 'Puma 180',
+      price: 499,
+      image: 'assets/images/puma180.jpg',
+    },
+    {
+      name: 'Nikedunk',
+      price: 499,
+      image: 'assets/images/nikedunk.jpg',
+    },
+    {
+      name: 'ADIZERO ADIOS PRO 4 M',
+      price: 1999,
+      image: 'assets/images/nigel2.jpg',
+    },
+    {
+      name: 'Puma 180',
+      price: 499,
+      image: 'assets/images/puma180.jpg',
+    },
+    {
+      name: 'Air Jordan 1',
+      price: 499,
+      image: 'assets/images/airjordan1-3.jpg',
+    },
   ];
 
-  personalizedProducts = [
-    { name: 'Tênis Nike Air Max', image: 'assets/images/nigel1.jpg' },
-    { name: 'Camiseta Nike Dry-Fit', image: 'assets/images/nigel1.jpg' },
-    { name: 'Mochila Nike Gym', image: 'assets/images/nigel1.jpg' },
-    { name: 'Boné Nike Original', image: 'assets/images/nigel1.jpg' },
-    { name: 'Jaqueta Nike Sportswear', image: 'assets/images/nigel1.jpg' },
-    { name: 'Camiseta Adidas Running', image: 'assets/images/nigel2.jpg' },
-    { name: 'Camiseta Adidas Running', image: 'assets/images/nigel2.jpg' },
-    { name: 'Camiseta Adidas Running', image: 'assets/images/nigel2.jpg' },
-    { name: 'Camiseta Adidas Running', image: 'assets/images/nigel2.jpg' },
-    { name: 'Camiseta Adidas Running', image: 'assets/images/nigel2.jpg' },
-  ];
+  personalizedProducts = this.recommendedProducts;
 
   scrollAmount = 300;
 
-  ngAfterViewInit() {
-    console.log(this.carouselTrack1, this.carouselTrack2);
-  }
+  ngAfterViewInit() { }
 
   nextSlide(carousel: 'carouselTrack1' | 'carouselTrack2') {
-    if (this[carousel]) {
-      this[carousel].nativeElement.scrollLeft += this.scrollAmount;
+    const track = this[carousel]?.nativeElement;
+    if (track) {
+      const card = track.querySelector('.product-card') as HTMLElement;
+      if (card) {
+        const cardWidth = card.offsetWidth + 20; 
+        track.scrollLeft += cardWidth;
+      }
     }
   }
 
   prevSlide(carousel: 'carouselTrack1' | 'carouselTrack2') {
-    if (this[carousel]) {
-      this[carousel].nativeElement.scrollLeft -= this.scrollAmount;
+    const track = this[carousel]?.nativeElement;
+    if (track) {
+      const card = track.querySelector('.product-card') as HTMLElement;
+      if (card) {
+        const cardWidth = card.offsetWidth + 20;
+        track.scrollLeft -= cardWidth;
+      }
     }
   }
 }
