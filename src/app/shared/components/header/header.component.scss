@@ -1,12 +1,12 @@
-header {
+.header {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 1000;
-  background-color: white;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background: white;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 
   &.hidden {
     transform: translateY(-100%);
@@ -14,41 +14,43 @@ header {
   }
 
   .top-bar {
-    background: #56ADB5;
+    background: #007580;
     color: white;
     text-align: center;
-    padding: 8px 0;
-    font-size: 14px;
+    font-size: 13px;
+    padding: 6px 0;
+    font-weight: 500;
+    letter-spacing: 0.5px;
   }
 
   .nav-bar {
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    padding: 15px 40px;
+    align-items: center;
+    padding: 18px 40px;
+    gap: 20px;
     flex-wrap: wrap;
-    gap: 10px;
   }
 
-  .logo {
-    width: 70px;
-  }
-
-  .menu ul {
+  .left {
     display: flex;
-    flex-wrap: wrap;
-    list-style: none;
-    padding: 0;
-    margin: 0;
+    align-items: center;
+    gap: 30px;
 
-    li {
-      margin: 0 15px;
+    .logo {
+      width: 60px;
+    }
 
-      a {
-        text-decoration: none;
-        color: black;
-        font-weight: bold;
-        font-size: 14px;
+    .menu a {
+      margin: 0 10px;
+      color: #333;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+      transition: color 0.2s;
+
+      &:hover {
+        color: #007580;
       }
     }
   }
@@ -56,67 +58,57 @@ header {
   .search {
     display: flex;
     align-items: center;
-    background: #f5f5f5;
-    min-width: 200px;
-    padding: 4px 10px;
-    border-radius: 8px;
-    border: 1px solid black;
-    flex-grow: 1;
-    max-width: 300px;
+    background: #f0f0f0;
+    border-radius: 50px;
+    padding: 5px 15px;
+    border: 1px solid #ccc;
+    flex: 1;
+    max-width: 400px;
+    margin: 0 20px;
 
     input {
       border: none;
-      background: none;
+      background: transparent;
       outline: none;
-      width: 100%;
-      padding: 10px 0;
+      flex: 1;
+      padding: 10px;
+      font-size: 14px;
     }
 
     button {
       background: none;
       border: none;
+      font-size: 16px;
       cursor: pointer;
-      font-size: 18px;
     }
   }
 
   .icons {
     display: flex;
     align-items: center;
-    gap: 20px;
-    flex-shrink: 0; 
-    margin-left: auto; 
-    min-width: 120px;
+    gap: 25px;
 
     a {
-      color: black;
-      font-size: 18px;
       position: relative;
-    }
+      color: #333;
+      font-size: 18px;
+      transition: color 0.2s;
 
-    .notification {
-      position: absolute;
-      top: -10px;
-      right: -10px;
-      background: #56ADB5;
-      color: black;
-      font-size: 12px;
-      padding: 2px 6px;
-      border-radius: 50%;
-      font-weight: bold;
-    }
-  }
+      &:hover {
+        color: #007580;
+      }
 
-  .secondary-menu {
-    display: flex;
-    justify-content: flex-end;
-    padding: 5px 40px;
-    font-size: 12px;
-
-    a {
-      color: black;
-      text-decoration: none;
-      margin-left: 15px;
+      .notification {
+        position: absolute;
+        top: -6px;
+        right: -8px;
+        background: #007580;
+        color: white;
+        font-size: 11px;
+        padding: 2px 6px;
+        border-radius: 50%;
+        font-weight: bold;
+      }
     }
   }
 }
