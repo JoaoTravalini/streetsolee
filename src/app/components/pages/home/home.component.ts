@@ -63,7 +63,7 @@ export class HomeComponent implements AfterViewInit {
     if (track) {
       const card = track.querySelector('.product-card') as HTMLElement;
       if (card) {
-        const cardWidth = card.offsetWidth + 20; 
+        const cardWidth = card.offsetWidth + 250; 
         track.scrollLeft += cardWidth;
       }
     }
@@ -74,7 +74,7 @@ export class HomeComponent implements AfterViewInit {
     if (track) {
       const card = track.querySelector('.product-card') as HTMLElement;
       if (card) {
-        const cardWidth = card.offsetWidth + 20;
+        const cardWidth = card.offsetWidth + 250;
         track.scrollLeft -= cardWidth;
       }
     }
